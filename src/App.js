@@ -6,7 +6,7 @@ function App() {
   const [hello, setHello] = useState([])
   const getHello = async ()=>{
     try{
-      const response = await api.get('/hello');
+      const response = await api.get('/hello/61f9dc332036ead27f4fada1');
       const res = response.data;
 
       if(res.error){
