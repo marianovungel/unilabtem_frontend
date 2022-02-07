@@ -3,7 +3,7 @@ import api from './services/api'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [hello, setHello] = useState([])
+  const [hello, setHello] = useState({})
   const getHello = async ()=>{
     try{
       const response = await api.get('/hello/61f9d82050e2c7fe203646ff');
