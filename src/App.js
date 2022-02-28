@@ -1,10 +1,14 @@
 import './App.css';
-import Venda from './pages/Venda/Venda'
+// import Venda from './pages/Venda/Venda'
+// import Login from './pages/Login/Login'
+import Registrar from './pages/Registrar/Registrar'
 
 function App() {
   return (
     <div className="App">
-     <Venda />
+      <Registrar />
+      {/* <Login /> */}
+     {/* <Venda /> */}
     </div>
   );
 }

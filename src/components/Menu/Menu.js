@@ -5,7 +5,7 @@ export default function Menu() {
   return (
     <div className="menu">
         <div className='logo'>
-            <img className='imagemLogo' src="https://fotografiamais.com.br/wp-content/uploads/2018/06/ensaio-fotografico-casal-ideias-ensaio-de-casal-diferente-fotos-de-casal-namorado-730x411.jpg" alt="logoUnilabtem" />
+            <img className='imagemLogo' src="./image\unilabtem.png" alt="logoUnilabtem" />
         </div>
         <menu className='menuList'>
             <h3>Desapego</h3>
