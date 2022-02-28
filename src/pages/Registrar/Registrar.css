@@ -5,7 +5,7 @@
 .content{
     width: 60%;
     height: 100vh;
-    margin: 70px auto;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +16,7 @@
     height: 160px;
     margin-top: -80px;
 }
-.logo{
+.logoLogin{
     background-color: #fff;
     border-radius: 50%;
     width: 120px;

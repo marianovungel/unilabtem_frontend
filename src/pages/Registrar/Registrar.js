@@ -1,11 +1,12 @@
 import React from 'react'
 import './Registrar.css'
+import {Link} from 'react-router-dom'
 
-export default function Login() {
+export default function Registrar() {
   return (
     <div className="login">
         <div className='content'>
-            <div className='logo'>
+            <div className='logoLogin'>
                 <img className='logoImg' src='./image/u.png' alt='logo'/>
             </div>
 
@@ -16,10 +17,10 @@ export default function Login() {
                         <input className='inputLogin' type='text' placeholder=' User' required />
                         <input className='inputLogin' type='password' placeholder=' Password' minLength='4' equired />
                         <input className='inputLogin' type='password' placeholder=' Password' minLength='4' equired />
-                        <button className='inputLogin entrarbutton' type='submit'>Sing In</button>
+                        <button className='inputLogin entrarbutton' type='submit'><Link to='/'>Registrar</Link></button>
                     </form>
                     <div className='criar'>
-                        <smoll className='Termos'>Termos e Políticas ou Login</smoll>
+                        <smoll className='Termos'><Link to='#'>Termos e Políticas</Link> ou <Link to='/'>Login</Link></smoll>
                     </div>
                 </div>
             </div>
