@@ -12,15 +12,15 @@ export default function Registrar() {
 
             <div className='section'>
                 <div className='form'>
-                    <form className='loginForm'>
+                    <form className='loginForm' >
                         <h2>Criar conta</h2>
-                        <input className='inputLogin' type='text' placeholder=' User' required />
-                        <input className='inputLogin' type='password' placeholder=' Password' minLength='4' equired />
-                        <input className='inputLogin' type='password' placeholder=' Password' minLength='4' equired />
+                        <input className='inputLogin' type='text' placeholder=' User' />
+                        <input className='inputLogin' type='password' placeholder=' Password' minLength='4' />
+                        <input className='inputLogin' type='password' placeholder=' Password' minLength='4' />
                         <button className='inputLogin entrarbutton' type='submit'><Link to='/'>Registrar</Link></button>
                     </form>
                     <div className='criar'>
-                        <smoll className='Termos'><Link to='#'>Termos e Políticas</Link> ou <Link to='/'>Login</Link></smoll>
+                        <span className='Termos'><Link to='#'>Termos e Políticas</Link> ou <Link to='/'>Login</Link></span>
                     </div>
                 </div>
             </div>
