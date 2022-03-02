@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     background-color: #F6F3F3;
+    border-radius: 10px 10px 0px 0px;
 }
 .sidebar{
     height: 100%;
@@ -10,4 +11,68 @@
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    border-radius: 10px;
+}
+.cadastrarProduto{
+    width: 71.5%;
+    height: 70px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.produtoCadastar{
+    height: 35px;
+    width: 200px;
+    border-radius: 30px;
+    background-color: rgb(99, 99, 211);
+    border: none;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+.formProduto{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 500px;
+    background-color: #193498;
+    position: fixed;
+    z-index: 99;
+    margin-top: 300px;
+}
+.fotoProduto{
+    width: 90%;
+    height: 35px;
+    border: none;
+    margin-top: 20px;
+    color: #fff;
+}
+.produtoFormModal{
+    color: #fff;
+}
+.colorbutton{
+    background-color: #69DADB;
+    color: #fff;
+}
+.inputProduto{
+    width: 90%;
+    height: 35px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 14px;
+}
+.story{
+    margin-top: 20px;
+    border-radius: 20px;
+    max-width: 280px;
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    border: none;
+    width: 90%;
 }

@@ -13,6 +13,6 @@ export const LoginFailure = () =>({
     type: "LOGIN_FAILURE",
 })
 
-// export const Logout = (userCredentials) =>({
-//     type: "LOGOUT",
-// })
+export const Logout = () =>({
+    type: "LOGOUT",
+})
