@@ -16,13 +16,13 @@ export default function Menu() {
         <div className='logo'>
             <img className='imagemLogo' src="./image\unilabtem.png" alt="logoUnilabtem" />
         </div>
-        <menu className='menuList'>
-            <h3>Desapego</h3>
-            <h3>Venda</h3>
-            <h3>Oportunidades</h3>
-            <h3>Vida na Unilab</h3>
-            <h3 onClick={hendSair}>Sair</h3>
-        </menu>
+        <ul className='menuList'>
+            <li>Desapego</li>
+            <li>Venda</li>
+            <li>Oportunidades</li>
+            <li>Vida na Unilab</li>
+            <li onClick={hendSair}>Sair</li>
+        </ul>
         <div className='fotoPerfil'>
             <img className="fotoPerfilImg" src="https://fotografiamais.com.br/wp-content/uploads/2018/06/ensaio-fotografico-casal-ideias-ensaio-de-casal-diferente-fotos-de-casal-namorado-730x411.jpg" alt="logoUnilabtem" />
         </div>

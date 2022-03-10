@@ -7,13 +7,27 @@
     background-color: aliceblue;
     border-radius: 8px;
     margin: 10px;
-    width: 250px;
+    margin-bottom: 45px;
+    width: 268px;
     height: 270px;
-
 }
 .nomePreco{
     width: 100%;
     border-radius: 0 0 10px 10px;
     background-color: rgb(199, 203, 207);
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.imgProduto{
+    width: 100%;
+}
+.imagemCard{
+    width: 90%;
+    height: 90%;
+}
+.valorNome{
+    color: rgb(78, 75, 75);
 }

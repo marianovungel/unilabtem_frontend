@@ -3,8 +3,11 @@
     width: 100%;
     height: 70px;
     display: flex;
-    margin-bottom: 20px;
     color: #F6F3F3;
+    align-items: center;
+}
+ul{
+    list-style: none;
 }
 .logo{
     flex: 2;
@@ -13,7 +16,6 @@
     align-items: center;
     width: 100px;
     height: 100px;
-    margin-left: 10px;
 }
 .menuList{
     flex: 8;
@@ -30,7 +32,6 @@
     border-radius: 50px;
     width: 100px;
     height: 100px;
-    margin-right: 10px;
 }
 .imagemLogo{
     border-radius: 50px;

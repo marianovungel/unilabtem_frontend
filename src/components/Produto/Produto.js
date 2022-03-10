@@ -1,9 +1,14 @@
 import React from 'react'
 import api from '../../services/api'
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import './Produto.css'
 
 export default function Produto() {
+  const history = useHistory();
+
+    //passando dados via location
+    
 
   const [produtoVenda, setProdutoVenda] = useState([])
   const getProdutoVenda = async ()=>{
@@ -11,6 +16,7 @@ export default function Produto() {
       const response = await api.get('/produto');
       const res = response.data;
 
+      
       if(res.error){
         alert(res.message);
         return false;
@@ -27,17 +33,24 @@ export default function Produto() {
   useEffect(() => {
     getProdutoVenda();
   }, [])
+  
 
+//   const location = {
+//     pathname: `/post/${produtoVenda?.id}`,
+//     state: produtoVenda,
+// }
+
+  const URLImg = "http://localhost:8000/img/";
   return (
     <>
         {produtoVenda?.map((post)=>(
-          <div className="Produto">
+          <div className="Produto"  onClick={() => history.push(`/post/${post?.id}`, post)} >
             <div className='imgProduto'>
-                <img src={post?.imagem} alt='imagem'/>
+                <img className='imagemCard' src={URLImg+post?.photo} alt='imagem'/>
             </div>
             <div className='nomePreco'>
-                <h2>{post?.nome}</h2>
-                <h2>{post?.preco}</h2>
+                <h3 className='valorNome'>{post?.title}</h3>
+                <h3 className='valorNome'>R$ {post?.preco}</h3>
             </div>
           </div>))}
     </>
