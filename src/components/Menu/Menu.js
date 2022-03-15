@@ -5,7 +5,7 @@ import {Context} from '../../Context/Context'
 
 export default function Menu() {
 
-  const {dispatch} = useContext(Context)
+  const { user, dispatch } = useContext(Context)
 
   const hendSair = ()=>{
     dispatch({type: "LOGOUT"})
@@ -24,7 +24,8 @@ export default function Menu() {
             <li onClick={hendSair}>Sair</li>
         </ul>
         <div className='fotoPerfil'>
-            <img className="fotoPerfilImg" src="https://fotografiamais.com.br/wp-content/uploads/2018/06/ensaio-fotografico-casal-ideias-ensaio-de-casal-diferente-fotos-de-casal-namorado-730x411.jpg" alt="logoUnilabtem" />
+          <i class="fa-solid fa-user"></i>
+          <smoll  className='smollUsername'>{user.username}</smoll>
         </div>
     </div>
   )
