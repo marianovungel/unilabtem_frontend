@@ -1,0 +1,73 @@
+.allCard{
+    background-color: #ffff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 1px;
+    margin-left: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width:100%;
+    min-width: 300px;
+}
+.divHeader{
+    height: 50px;
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#idImg{
+    height: 40px;
+    width:40px;
+    border-radius: 50%;
+    border: 2px solid rgba(6, 6, 6, 0.3);
+    margin-left: 10px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SpanUsername{
+    font-size: 7pt;
+    margin-left: 5px;
+    color: #666;
+}
+.divHero{
+    height: 350px;
+    width:100%;
+    border-top: 2px solid #666;
+}
+#heroIgm{
+    width: 100%;
+    height: 350px;
+}
+.divFooter{
+    background-color: rgba(6, 6, 6, 0.2);
+    border-top: 2px solid #666;
+    height: 50px;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0px 0px 10px 10px;
+}
+.buttonSaiba{
+    margin-right: 10px;
+    height: 35px;
+    border-radius: 10px;
+    color: #666;
+    border: none;
+}
+.descClassName{
+    width: 100%;
+    padding: 10px;
+}
+.descSpan{
+    width: 100%;
+    text-align: justify;
+    font-size: 8pt;
+}
+.spanDate{
+    font-size: 8pt;
+    color:#666;
+    margin-left: 20px;
+}

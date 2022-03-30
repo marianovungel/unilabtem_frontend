@@ -44,7 +44,7 @@ export default function Produto() {
   return (
     <>
         {produtoVenda?.map((post)=>(
-          <div className="Produto"  onClick={() => history.push(`/post/${post?.id}`, post)} >
+          <div className="Produto"  onClick={() => history.push(`/post/${post?.id}`, post)}  key={post?.photo}>
             <div className='imgProduto'>
                 <img className='imagemCard' src={URLImg+post?.photo} alt='imagem'/>
             </div>

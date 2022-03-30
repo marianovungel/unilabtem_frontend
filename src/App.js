@@ -6,6 +6,7 @@ import Venda from './pages/Venda/Venda'
 import Login from './pages/Login/Login'
 import Registrar from './pages/Registrar/Registrar'
 import SingleVenda from './pages/SingleVenda/SingleVenda';
+import Desapego from './pages/Desapego/Desapego';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Switch> 
           <Route path="/" component={ user ? Venda : Login} exact />
+          <Route path="/desapego" component={ user ? Desapego : Login} />
           <Route path="/post/:id" component={SingleVenda} />
           <Route path="/login" component={Login} />
           <Route path="/registrar" component={Registrar} />

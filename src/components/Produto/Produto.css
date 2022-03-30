@@ -23,10 +23,11 @@
 }
 .imgProduto{
     width: 100%;
+    height: 170px;
 }
 .imagemCard{
     width: 100%;
-    height: 100%;
+    height: 170px;
     border-radius: 10px 10px 0 0;
 }
 .valorNome{

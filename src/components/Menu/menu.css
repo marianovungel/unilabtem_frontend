@@ -5,6 +5,8 @@
     display: flex;
     color: #F6F3F3;
     align-items: center;
+    position: fixed;
+    z-index: 99;
 }
 ul{
     list-style: none;
