@@ -15,10 +15,10 @@ export default function Menu({props}) {
   return (
     <div className="menu">
         <div className='logo'>
-            <img className='imagemLogo' src="./image\unilabtem.png" alt="logoUnilabtem" />
+            <img className='imagemLogo' src="./image/preta.png" alt="logoUnilabtem" />
         </div>
         <ul className='menuList'>
-            <Link to='desapego'><li>Desapego</li></Link>
+            <Link to='/desapego'><li>Desapego</li></Link>
             <Link to='/'><li>Venda</li></Link>
             <li>Oportunidades</li>
             <li>Vida na Unilab</li>

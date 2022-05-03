@@ -28,7 +28,7 @@
     align-items: center;
 }
 .loginForm{
-    background-color: #F6F3F3;
+    background-color: rgba(6, 3, 3, 0,47);
     width: 360px;
     height: 350px;
     display: flex;
@@ -45,9 +45,19 @@
     margin-bottom: 20px;
     border-radius: 30px;
     border: none;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14pt;
+}
+.inputLogin:focus, .entrarbutton:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0px 0px 1px 0px;
+    border-bottom: red;
 }
 .entrarbutton{
     background-color: #1597E5;
+    border-radius: 4px;
 }
 .criar{
     margin-top: 50px;
@@ -59,4 +69,12 @@
 .Termos{
     color: aliceblue;
     text-decoration: underline;
+}
+.errRegister{
+    background-color: #fff;
+    color: red;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 3px solid red;
 }

@@ -5,7 +5,16 @@ import './Venda.css';
 import {useState, useContext} from 'react'
 import {Context} from '../../Context/Context'
 import api from '../../services/api'
-// import Swal from 'sweetalert2'
+import upload from '../../services/upload'
+//upload img
+async function postImage({image, description}) {
+  const formData = new FormData();
+  formData.append("image", image)
+  formData.append("description", description)
+
+  const result = await upload.post('/images', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+  return result.data
+}
 
 function Venda() {
 
@@ -16,8 +25,10 @@ function Venda() {
   
 
   const { user } = useContext(Context)
+//upload img function
 
-  const handleSubmit = async ()=>{
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
     const newPost = {
       username: user.username,
       userwhatsapp: user.whatsapp,
@@ -26,38 +37,38 @@ function Venda() {
       desc,
     };
     if(file){
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
       try{
-        const res =  await api.post("/upload", data);
-        console.log(res)
+        const description = Date.now() + file.name;
+        const result = await postImage({image: file, description})
+        console.log(result)
+        newPost.photo = result.imagePath.split("/")[2];
       }catch(err){}
     }
     try{
-      await api.post("/produto", newPost);
+      const resp = await api.post("/produto", newPost);
+      console.log(resp.data.post.photo)
     }catch(err){}
   }
-
   
   return (
     <div className="venda">
       <Menu />
       <div className='conteiner'>
         <div className='cadastrarProduto'>
+          <div className='banner'>
+            <div  className='buttonCadastrar'><i class="fa-solid fa-bag-shopping" id='shoop'></i></div>
+            <div className='corpoBanner'> Venda online, divulga e compra produtos que estão a ser vendidos Em Redenção e cidades vizinhas ...</div>
+            <div className='triangulo'></div>
+          </div>
+          
           <form className='formProduto' onSubmit={handleSubmit} >
             <h2 className='produtoFormModal'>Cadastrar Produto</h2>
-            {file && (
-              <div className='imgPostPreviw'>
-                <img src={URL.createObjectURL(file)} alt='uploadImg' className='imgPostPreviw' />
-              </div>
-            )}
-            <input className='fotoProduto' type='file' onChange={(e)=> setFile(e.target.files[0])} />
+            
+            <input type="file" accept="image/*" onChange={(e)=> setFile(e.target.files[0])}/>
+            
             <input className='inputProduto' type='text' placeholder='Titulo' onChange={(e)=> setTitle(e.target.value)} />
-            <input className='inputProduto' type='Number' placeholder='R$ 00,0' onChange={(e)=> setPreco(e.target.value)} />
-            <textarea className="story" rows="10" cols="33" onChange={(e)=> setDesc(e.target.value)} ></textarea>
+            <input className='inputProduto' type='Number' placeholder='R$ 00,00' onChange={(e)=> setPreco(e.target.value)} />
+            <textarea placeholder='descrição...' className="story" rows="10" cols="33" onChange={(e)=> setDesc(e.target.value)} ></textarea>
             <button className='inputProduto colorbutton' type='submit'> Cadastrar </button>
           </form>
         </div>
