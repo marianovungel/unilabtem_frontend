@@ -22,6 +22,7 @@ export default function SingleVenda() {
   const [desc, setDesc ] = useState("")
   const [editar, setEditar ] = useState(false)
   
+  
   useEffect(()=>{
     const getPost = async ()=>{
       const res = await api.get("/produto/"+path)

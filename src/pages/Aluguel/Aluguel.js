@@ -1,16 +1,43 @@
 import React from 'react'
 import './Aluguel.css'
 import Menu from '../../components/Menu/Menu'
+import {Link} from 'react-router-dom'
+import {useState, useEffect} from 'react'
+import api from '../../services/api'
 
 export default function Aluguel() {
+
+    const [aluguel, setAluguel] = useState([]);;
+    useEffect(()=>{
+        const FetchDesapego = async () => {
+            try{
+                const res = await api.get("/aluguel")
+                setAluguel(res.data);
+            }catch(err){
+                console.log(err)
+            }
+        }
+    
+        FetchDesapego();
+    }, [])
+
+    console.log(aluguel)
+    const URLImg = "https://festupload.s3.amazonaws.com/";
+
   return (
     <div className='fullContentAluguel'>
         <Menu />
         <header className='headerAluguel'>
             <div className='flexHeaderAluguel'>
-                <button id='alugarCasa' className='buttonHeaderAluguel'>Aluguel</button>
-                <button className='buttonHeaderAluguel'>Compartilhamento</button>
+                <Link to='/habitacao/aluguel'>
+                    <button id='alugarCasa' className='buttonHeaderAluguel'>Aluguel</button>
+                </Link>
+                <Link to='/habitacao/compartilhar'>
+                    <button className='buttonHeaderAluguel'>Compartilhamento</button>
+                </Link>
+                <Link to='/habitacao/aluguel/cadastrar'>
                 <button className='buttonHeaderAluguel'>Postar Casa...</button>
+                </Link>
                 <form className='formSearchAluguelHeader'>
                     <input className='inputParaPesquisarAluguel' type='search' placeholder='Pesquise por cidade...' minLength='1' />
                     <button type='submit' className='botaoDePesquisaAluguel'>Pesquisar...</button>
@@ -18,54 +45,20 @@ export default function Aluguel() {
             </div>
         </header>
         <div className='contentSideBar'>
-            <div className='cardAluguel'>
-                <img className='imgAluguelCard' src='https://i.mgfserv.com/360x270/aHR0cDovL2ltZy5vbHguY29tLmJyL2ltYWdlcy82OC82ODc1MjkxMDI0MTMxODAuanBn.jpg' alt='' />
+            {aluguel.map((p)=>(
+                <div className='cardAluguel' key={p?._id}>
+                <img className='imgAluguelCard' src={URLImg + p.photo} alt='' />
                 <div className='descPlaceAluguel'>
                     <div className='ajustPositionDesc'>
-                        <p><i>Categoria</i>: <b>Apartamento</b></p>
-                        <p><i>Cidade</i>: <b>Redenção</b></p>
-                        <p><i>Preço</i>: <b>R$530</b></p>
+                        <p><i>Categoria</i>: <b>{p.categories}</b></p>
+                        <p><i>Cidade</i>: <b>{p.cidade}</b></p>
+                        <p><i>Preço</i>: <b>R${p.preco}</b></p>
                         <p><i>Status</i>: <b>Desponível</b></p>
                     </div>
-                    <button className='buttonHeaderAluguela'>Mais informações</button>
+                    <Link to={`/habitacao/aluguel/${p?._id}`}><button className='buttonHeaderAluguela'>Mais informações</button></Link>
                 </div>
             </div>
-            <div className='cardAluguel'>
-                <img className='imgAluguelCard' src='https://cdn.uso.com.br/32326/2019/06/97001032.jpg' alt='' />
-                <div className='descPlaceAluguel'>
-                    <div className='ajustPositionDesc'>
-                        <p><i>Categoria</i>: <b>Apartamento</b></p>
-                        <p><i>Cidade</i>: <b>Redenção</b></p>
-                        <p><i>Preço</i>: <b>R$530</b></p>
-                        <p><i>Status</i>: <b>Desponível</b></p>
-                    </div>
-                    <button className='buttonHeaderAluguela'>Mais informações</button>
-                </div>
-            </div>
-            <div className='cardAluguel'>
-                <img className='imgAluguelCard' src='https://imgbr.imovelwebcdn.com/avisos/2/29/33/01/57/29/720x532/1045272687.jpg' alt='' />
-                <div className='descPlaceAluguel'>
-                    <div className='ajustPositionDesc'>
-                        <p><i>Categoria</i>: <b>Apartamento</b></p>
-                        <p><i>Cidade</i>: <b>Redenção</b></p>
-                        <p><i>Preço</i>: <b>R$530</b></p>
-                        <p><i>Status</i>: <b>Desponível</b></p>
-                    </div>
-                    <button className='buttonHeaderAluguela'>Mais informações</button>
-                </div>
-            </div>
-            <div className='cardAluguel'>
-                <img className='imgAluguelCard' src='https://www.jxavier.com.br/jxavier/site/assets/images/properties/818x540/7189_22696.jpg' alt='' />
-                <div className='descPlaceAluguel'>
-                    <div className='ajustPositionDesc'>
-                        <p><i>Categoria</i>: <b>Apartamento</b></p>
-                        <p><i>Cidade</i>: <b>Redenção</b></p>
-                        <p><i>Preço</i>: <b>R$530</b></p>
-                        <p><i>Status</i>: <b>Desponível</b></p>
-                    </div>
-                    <button className='buttonHeaderAluguela'>Mais informações</button>
-                </div>
-            </div>
+            ))}
         </div>
     </div>
   )
