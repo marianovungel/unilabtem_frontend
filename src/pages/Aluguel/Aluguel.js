@@ -23,7 +23,6 @@ export default function Aluguel() {
 
     console.log(aluguel)
     const URLImg = "https://festupload.s3.amazonaws.com/";
-
   return (
     <div className='fullContentAluguel'>
         <Menu />

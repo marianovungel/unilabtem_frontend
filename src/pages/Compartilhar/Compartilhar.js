@@ -59,7 +59,7 @@ export default function Compartilhar() {
                 </div>
             </div>
             ))}
-        </div>
+    </div>
     </div>
     </div>
   )
