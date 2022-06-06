@@ -14,6 +14,7 @@ import CadastrarAluguel from './pages/CadastrarAluguel/CadastrarAluguel';
 import CadastrarCompartilhar from './pages/CadastrarCompartilhar/CadastrarCompartilhar';
 import SingleAluguel from './pages/SingleAluguel/SingleAluguel';
 import SingleCompartilhar from './pages/SingleCompartilhar/SingleCompartilhar';
+import Sobre from './pages/Sobre/Sobre';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/post/:id" component={user ? SingleVenda  : Login} />
           <Route path="/desapego/:id" component={user ? SingleDesapego  : Login} />
           <Route path="/login" component={Login} />
+          <Route path="/sobre" component={Sobre} />
           <Route path="/registrar" component={Registrar} />
         </Switch>
       </BrowserRouter>

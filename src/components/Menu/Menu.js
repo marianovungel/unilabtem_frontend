@@ -23,6 +23,7 @@ export default function Menu({props}) {
             <Link to='/habitacao/aluguel'><li>Habitação</li></Link>
             <li>Oportunidades</li>
             <li>Vida na Unilab</li>
+            <Link to='/sobre'><li>Sobre</li></Link>
             <li onClick={hendSair}>Sair</li>
         </ul>
         <div className='fotoPerfil'>
