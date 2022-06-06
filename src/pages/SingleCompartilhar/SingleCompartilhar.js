@@ -18,6 +18,7 @@ export default function SingleCompartilhar() {
   const [editar, setEditar ] = useState(false)
   console.log(location)
   
+  
   useEffect(()=>{
     const getPost = async ()=>{
       const res = await api.get("/compartilhar/"+path)
