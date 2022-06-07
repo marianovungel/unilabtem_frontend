@@ -35,7 +35,7 @@ export default function Compartilhar() {
                 <Link to='/habitacao/compartilhar'>
                 <button id='alugarCasa' className='buttonHeaderAluguel'>Compartilhamento</button>
                 </Link>
-                <Link to='/habitacao/compartilhar/cadastrar'>
+                <Link to='/compartilhar/cadastrar'>
                     <button className='buttonHeaderAluguel'>Postar Casa...</button>
                 </Link>
                 <form className='formSearchAluguelHeader'>
