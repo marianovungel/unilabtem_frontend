@@ -132,19 +132,35 @@ export default function CadastrarAluguel() {
             <form className='formCadastrarContent' onSubmit={handleSubmit}>
                 <i className='headerI'>Adaiciona cinco (5) imagens...</i>
                 <div className='imgPhotosHoome'>
+                {file1 ? (
+                    <img src={URL.createObjectURL(file1)} alt='uploadImg' className='labelFotoObject' />
+                ):(
                     <label for='foto1' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                )}
                     <input type="file" accept="image/*" id='foto1' required className='inputFotoLabelAlugel'onChange={(e)=> setFile1(e.target.files[0])} />
-
+                    {file2 ? (
+                    <img src={URL.createObjectURL(file2)} alt='uploadImg' className='labelFotoObject' />
+                    ):(
                     <label for='foto2' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                    )}
                     <input type="file" accept="image/*" id='foto2' required className='inputFotoLabelAlugel' onChange={(e)=> setFile2(e.target.files[0])}/>
-
+                    {file3 ? (
+                    <img src={URL.createObjectURL(file3)} alt='uploadImg' className='labelFotoObject' />
+                    ):(
                     <label for='foto3' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                    )}
                     <input type="file" accept="image/*" id='foto3' required className='inputFotoLabelAlugel' onChange={(e)=> setFile3(e.target.files[0])}/>
-
+                    {file4 ? (
+                    <img src={URL.createObjectURL(file4)} alt='uploadImg' className='labelFotoObject' />
+                    ):(
                     <label for='foto4' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                    )}
                     <input type="file" accept="image/*" id='foto4' required className='inputFotoLabelAlugel' onChange={(e)=> setFile4(e.target.files[0])}/>
-
+                    {file5 ? (
+                    <img src={URL.createObjectURL(file5)} alt='uploadImg' className='labelFotoObject' />
+                    ):(
                     <label for='foto5' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                    )}
                     <input type="file" accept="image/*" id='foto5' required className='inputFotoLabelAlugel' onChange={(e)=> setFile5(e.target.files[0])}/>
                 </div>
                 <div className='inputsFormeCadastrarAluguel'>
