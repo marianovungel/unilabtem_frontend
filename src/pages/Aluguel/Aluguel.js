@@ -34,7 +34,7 @@ export default function Aluguel() {
                 <Link to='/habitacao/compartilhar'>
                     <button className='buttonHeaderAluguel'>Compartilhamento</button>
                 </Link>
-                <Link to='/aluguel/cadastrar'>
+                <Link to='/aluguel/cadastrando'>
                 <button className='buttonHeaderAluguel'>Postar Casa...</button>
                 </Link>
                 <form className='formSearchAluguelHeader'>
@@ -46,7 +46,7 @@ export default function Aluguel() {
         <div className='contentSideBar'>
             {aluguel.map((p)=>(
                 <div className='cardAluguel' key={p?._id}>
-                <img className='imgAluguelCard' src={URLImg + p.photo} alt='' />
+                <img className='imgAluguelCard' src={URLImg + p.photo1} alt='' />
                 <div className='descPlaceAluguel'>
                     <div className='ajustPositionDesc'>
                         <p><i>Categoria</i>: <b>{p.categories}</b></p>

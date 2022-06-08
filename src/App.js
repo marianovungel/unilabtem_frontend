@@ -30,7 +30,7 @@ function App() {
           <Route path="/habitacao/aluguel/cadastrar" component={ user ? CadastrarAluguel : Login} exact />
           <Route path="/habitacao/compartilhar" component={ user ? Compartilhar : Login} exact />
           <Route path="/habitacao/compartilhar/:id" component={ user ? SingleCompartilhar : Login} exact />
-          <Route path="/aluguel/cadastrar" component={ user ? CadastrarAluguel : Login} exact />
+          <Route path="/aluguel/cadastrando" component={ user ? CadastrarAluguel : Login} exact />
           <Route path="/habitacao/compartilhar" component={ user ? Compartilhar : Login} exact />
           <Route path="/compartilhar/cadastrar" component={ user ? CadastrarCompartilhar : Login} exact />
           <Route path="/post/:id" component={user ? SingleVenda  : Login} />

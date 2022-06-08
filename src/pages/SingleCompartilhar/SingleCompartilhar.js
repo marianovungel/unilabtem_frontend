@@ -67,7 +67,7 @@ const handleDelete = async () =>{
       await api.delete(`/compartilhar/${post._id}`, {
           data: { username: user.username }
       });
-      window.location.replace("/");
+      window.location.replace("/habitacao/compartilhar");
   }catch(err){
       console.log(err)
   }
@@ -94,7 +94,7 @@ const hendleUpdate = async () =>{
           <div className='imgContent'>
             <p id='categoria'>Categoria: {post.categories}</p>
             <div className='imgDivSingle'>
-              <img id='photoVendaId' src={URLImg+post.photo} alt='#' />
+              <img id='photoVendaId' src={URLImg+post.photo1} alt='#' />
             </div>
             
           </div>

@@ -47,7 +47,7 @@ export default function Compartilhar() {
         <div className='contentSideBar'>
             {compartilhar?.map((p)=>(
                 <div className='cardAluguel' key={p?._id}>
-                <img className='imgAluguelCard' src={URLImg + p.photo} alt='' />
+                <img className='imgAluguelCard' src={URLImg + p.photo3} alt='' />
                 <div className='descPlaceAluguel'>
                     <div className='ajustPositionDesc'>
                         <p><i>Categoria</i>: <b>{p.categories}</b></p>
