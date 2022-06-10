@@ -36,6 +36,7 @@ export default function CadastrarAluguel() {
     const [banheiro, setBanheiro] = useState("")
     const [area, setArea] = useState("")
     const [desc, setDesc] = useState("")
+    const [alertImg, setAlertImg] = useState(false)
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -102,9 +103,24 @@ export default function CadastrarAluguel() {
             }catch(err){}
           }
         try{
-          const res =  await api.post("/aluguel", newPost);
-          console.log(res)
+          console.log(file1)
+          if(file1 !== null && file2 !== null && file3 !== null && file4 !== null && file5 !== null){
+            const res =  await api.post("/aluguel", newPost);
+            console.log(res)
+            setAlertImg(false)
+          }else{
+            setAlertImg(true)
+          }
         }catch(err){}
+      }
+
+
+      const setImg = () =>{
+        if(file1 !== null && file2 !== null && file3 !== null && file4 !== null && file5 !== null){
+          setAlertImg(false)
+        }else{
+          setAlertImg(true)
+        }
       }
 
       //cep
@@ -130,12 +146,13 @@ export default function CadastrarAluguel() {
         </header>
         <div className='contentSideBarForm'>
             <form className='formCadastrarContent' onSubmit={handleSubmit}>
+              {alertImg && (<h6 className='headerIAlert'>Adicione as 5 imagens para proceguir...</h6>)}
                 <i className='headerI'>Adaiciona cinco (5) imagens...</i>
                 <div className='imgPhotosHoome'>
                 {file1 ? (
                     <img src={URL.createObjectURL(file1)} alt='uploadImg' className='labelFotoObject' />
                 ):(
-                    <label for='foto1' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                    <label for='foto1' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd" ></i></label>
                 )}
                     <input type="file" accept="image/*" id='foto1' required className='inputFotoLabelAlugel'onChange={(e)=> setFile1(e.target.files[0])} />
                     {file2 ? (
@@ -189,7 +206,7 @@ export default function CadastrarAluguel() {
                         <textarea className='forNewDesc' placeholder='Descreve a casa em poucas palavras....' maxLength='200' onChange={(e)=> setDesc(e.target.value)}></textarea>
                     </div>
                     <div className='precoType'>
-                        <button type='submit' className='CadastrarcasaEmAluguel'>Cadastrar casa em Aluguel</button>
+                        <button type='submit' onClick={setImg} className='CadastrarcasaEmAluguel'>Cadastrar casa em Aluguel</button>
                     </div>
                 </div>
             </form>

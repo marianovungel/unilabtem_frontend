@@ -94,5 +94,11 @@
     color: #fff;
     font-size: 15pt;
     border-radius: 10px;
-    
+}
+.headerIAlert{
+    width: 100%;
+    border: 1px solid rgba(247, 33, 33, 0.742);
+    box-shadow: 1px 1px 1px rgba(247, 33, 33, 0.742);
+    text-align: center;
+    padding: 8px;
 }

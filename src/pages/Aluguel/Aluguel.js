@@ -4,6 +4,7 @@ import Menu from '../../components/Menu/Menu'
 import {Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import api from '../../services/api'
+import Header from '../../components/Header/Header'
 
 export default function Aluguel() {
 
@@ -28,19 +29,7 @@ export default function Aluguel() {
         <Menu />
         <header className='headerAluguel'>
             <div className='flexHeaderAluguel'>
-                <Link to='/habitacao/aluguel'>
-                    <button id='alugarCasa' className='buttonHeaderAluguel'>Aluguel</button>
-                </Link>
-                <Link to='/habitacao/compartilhar'>
-                    <button className='buttonHeaderAluguel'>Compartilhamento</button>
-                </Link>
-                <Link to='/aluguel/cadastrando'>
-                <button className='buttonHeaderAluguel'>Postar Casa...</button>
-                </Link>
-                <form className='formSearchAluguelHeader'>
-                    <input className='inputParaPesquisarAluguel' type='search' placeholder='Pesquise por cidade...' minLength='1' />
-                    <button type='submit' className='botaoDePesquisaAluguel'>Pesquisar...</button>
-                </form>
+            <Header />
             </div>
         </header>
         <div className='contentSideBar'>

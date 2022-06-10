@@ -38,6 +38,7 @@ export default function CadastrarCompartilhar() {
     const [desc, setDesc] = useState("")
     const [moradores, setMoradores] = useState("")
     const [addPhoto, SetAddPhoto] = useState(false)
+    const [alertImg, setAlertImg] = useState(false)
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -103,6 +104,14 @@ export default function CadastrarCompartilhar() {
         }catch(err){}
       }
 
+      const setImg = () =>{
+        if(file1 !== null && file2 !== null && file3 !== null && file4 !== null && file5 !== null){
+          setAlertImg(false)
+        }else{
+          setAlertImg(true)
+        }
+      }
+
       //cep
       const Cepfuncion = async ()=>{
         try{
@@ -133,6 +142,7 @@ export default function CadastrarCompartilhar() {
         )}
         <div className='contentSideBarForm'>
             <form className='formCadastrarContent' onSubmit={handleSubmit}>
+            {alertImg && (<h6 className='headerIAlert'>Adicione as 5 imagens para proceguir...</h6>)}
                 <i className='headerI'>Adaiciona cinco (5) imagens...</i>
                 <div className='imgPhotosHoome'>
                 {file1 ? (
@@ -193,7 +203,7 @@ export default function CadastrarCompartilhar() {
                         <textarea className='forNewDesc' placeholder='Descreve a casa em poucas palavras....' maxLength='200' onChange={(e)=> setDesc(e.target.value)}></textarea>
                     </div>
                     <div className='precoType'>
-                        <button type='submit' className='CadastrarcasaEmAluguel'>Cadastrar casa em Aluguel</button>
+                        <button type='submit' onClick={setImg} className='CadastrarcasaEmAluguel'>Cadastrar casa em Aluguel</button>
                     </div>
                 </div>
             </form>
