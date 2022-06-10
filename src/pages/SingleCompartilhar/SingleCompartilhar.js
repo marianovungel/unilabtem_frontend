@@ -15,6 +15,7 @@ export default function SingleCompartilhar() {
   const [post, setPost] = useState({})
   const [title, setTitle ] = useState("")
   const [desc, setDesc ] = useState("")
+  const [foto, setFoto ] = useState("")
   const [editar, setEditar ] = useState(false)
   console.log(location)
   
@@ -26,6 +27,7 @@ export default function SingleCompartilhar() {
       setTitle(res.data.title)
       setDesc(res.data.desc)
       console.log(res.data)
+      setFoto(res.data.photo1)
     }
     getPost()
   }, [path])
@@ -86,6 +88,22 @@ const hendleUpdate = async () =>{
   }
 }
 
+const FotoChengOne = ()=>{
+  setFoto(post.photo1)
+}
+const FotoChengTwo = ()=>{
+  setFoto(post.photo2)
+}
+const FotoChengTrei = ()=>{
+  setFoto(post.photo3)
+}
+const FotoChengFort = ()=>{
+  setFoto(post.photo4)
+}
+const FotoChengFive = ()=>{
+  setFoto(post.photo5)
+}
+
 
   return (
     <div className='conteinerSinglePostVenda'>
@@ -94,7 +112,14 @@ const hendleUpdate = async () =>{
           <div className='imgContent'>
             <p id='categoria'>Categoria: {post.categories}</p>
             <div className='imgDivSingle'>
-              <img id='photoVendaId' src={URLImg+post.photo1} alt='#' />
+              <img id='photoVendaId' src={URLImg+foto} alt='#' />
+            </div>
+            <div className='imgDivSingleClass'>
+              <img className='photoVendaclassName' onClick={FotoChengOne} src={URLImg+post.photo1} alt='#' />
+              <img className='photoVendaclassName' onClick={FotoChengTwo} src={URLImg+post.photo2} alt='#' />
+              <img className='photoVendaclassName' onClick={FotoChengTrei} src={URLImg+post.photo3} alt='#' />
+              <img className='photoVendaclassName' onClick={FotoChengFort} src={URLImg+post.photo4} alt='#' />
+              <img className='photoVendaclassName' onClick={FotoChengFive} src={URLImg+post.photo5} alt='#' />
             </div>
             
           </div>

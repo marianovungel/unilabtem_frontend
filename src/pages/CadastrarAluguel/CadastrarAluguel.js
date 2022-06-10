@@ -69,7 +69,7 @@ export default function CadastrarAluguel() {
         if(file2){
           try{
             const description = Date.now() + file2.name;
-            const result = await postImage({image: file1, description})
+            const result = await postImage({image: file2, description})
             newPost.photo2 = result.imagePath.split("/")[2];
             
             
@@ -78,7 +78,7 @@ export default function CadastrarAluguel() {
         if(file3){
             try{
               const description = Date.now() + file3.name;
-              const result = await postImage({image: file1, description})
+              const result = await postImage({image: file3, description})
               newPost.photo3 = result.imagePath.split("/")[2];
               
               
@@ -87,7 +87,7 @@ export default function CadastrarAluguel() {
           if(file4){
             try{
               const description = Date.now() + file4.name;
-              const result = await postImage({image: file1, description})
+              const result = await postImage({image: file4, description})
               newPost.photo4 = result.imagePath.split("/")[2];
               
               
@@ -96,7 +96,7 @@ export default function CadastrarAluguel() {
           if(file5){
             try{
               const description = Date.now() + file5.name;
-              const result = await postImage({image: file1, description})
+              const result = await postImage({image: file5, description})
               newPost.photo5 = result.imagePath.split("/")[2];
               
               
@@ -108,6 +108,7 @@ export default function CadastrarAluguel() {
             const res =  await api.post("/aluguel", newPost);
             console.log(res)
             setAlertImg(false)
+            window.location.replace("/habitacao/aluguel");
           }else{
             setAlertImg(true)
           }
