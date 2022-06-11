@@ -80,7 +80,7 @@ const hendleUpdate = async () =>{
           title: title,
           desc: desc,
       });
-      window.location.reload('http://localhost:3000/habitacao/aluguel');
+      window.location.reload('/habitacao/aluguel');
       setEditar(false)
   }catch(err){
       console.log(err)
