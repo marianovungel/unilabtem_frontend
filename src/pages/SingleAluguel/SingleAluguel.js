@@ -68,7 +68,7 @@ const handleDelete = async () =>{
       await api.delete(`/aluguel/${post._id}`, {
           data: { username: user.username }
       });
-      window.location.replace("/habitacao/aluguel");
+      window.location.replace("https://enchanting-entremet-bfde4f.netlify.app/habitacao/aluguel");
   }catch(err){
       console.log(err)
   }
