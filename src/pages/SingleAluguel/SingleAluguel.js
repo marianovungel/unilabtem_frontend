@@ -2,7 +2,7 @@ import React from 'react'
 import './SingleAluguel.css'
 import Menu from '../../components/Menu/Menu'
 import { useState, useEffect, useContext } from 'react';
-import { useLocation} from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 import api from '../../services/api'
 import { Context } from '../../Context/Context';
 import Swal from 'sweetalert2';
@@ -148,7 +148,9 @@ const FotoChengFive = ()=>{
           </div>
           <div className='butoomContent'>
             {post.username === user.username ? (
-              <div className='buttonZapDiv'><button  className='buttonEditar' onClick={EditTrue}>Editar <i className="fa-solid fa-pen-to-square"></i></button></div>
+              <Link to={`/aluguel/edit/${post?._id}`}>
+                <div className='buttonZapDiv'><button  className='buttonEditar' onClick={EditTrue}>Editar <i className="fa-solid fa-pen-to-square"></i></button></div>
+              </Link>
             ) : (
               <div></div>
             )}

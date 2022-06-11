@@ -1,10 +1,11 @@
 import React from 'react'
 import Menu from '../../components/Menu/Menu'
-import './CadastrarCompartilhar.css'
-import {useState, useContext} from 'react'
+import './EditAluguel.css'
+import {useState, useContext, useEffect} from 'react'
 import {Context} from '../../Context/Context'
 import upload from '../../services/upload'
 import api from '../../services/api'
+import { useLocation} from 'react-router-dom';
 
 //upload img
 async function postImage({image, description}) {
@@ -16,8 +17,7 @@ async function postImage({image, description}) {
     return result.data
   }
 
-export default function CadastrarCompartilhar() {
-
+export default function EditAluguel() {
     //useStates
     const { user } = useContext(Context)
     const [file1, setFile1] = useState(null)
@@ -36,9 +36,32 @@ export default function CadastrarCompartilhar() {
     const [banheiro, setBanheiro] = useState("")
     const [area, setArea] = useState("")
     const [desc, setDesc] = useState("")
-    const [moradores, setMoradores] = useState("")
-    const [addPhoto, SetAddPhoto] = useState(false)
+    // const [post, setPost] = useState()
     const [alertImg, setAlertImg] = useState(false)
+    const location = useLocation();
+
+  const path = location.pathname.split("/")[3]
+
+    //pegar  os dados
+    useEffect(()=>{
+        const getPost = async ()=>{
+          const res = await api.get("/aluguel/"+path)
+        //   setPost(res.data)
+          setCat(res.data.categories)
+          setPreco(res.data.preco)
+          setCepp(res.data.cepp)
+          setCep(res.data.cep)
+          setContrato(res.data.contrato)
+          setQuarto(res.data.quarto)
+          setSala(res.data.sala)
+          setCozinha(res.data.cozinha)
+          setBanheiro(res.data.banheiro)
+          setArea(res.data.area)
+          setDesc(res.data.desc)
+        }
+        getPost()
+
+      }, [path])
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -57,15 +80,15 @@ export default function CadastrarCompartilhar() {
           cozinha,
           banheiro,
           area,
-          moradores: moradores,
 
         };
-        
         if(file1){
           try{
             const description = Date.now() + file1.name;
             const result = await postImage({image: file1, description})
             newPost.photo1 = result.imagePath.split("/")[2];
+            
+            
           }catch(err){}
         }
         if(file2){
@@ -73,6 +96,8 @@ export default function CadastrarCompartilhar() {
             const description = Date.now() + file2.name;
             const result = await postImage({image: file2, description})
             newPost.photo2 = result.imagePath.split("/")[2];
+            
+            
           }catch(err){}
         }
         if(file3){
@@ -80,6 +105,8 @@ export default function CadastrarCompartilhar() {
               const description = Date.now() + file3.name;
               const result = await postImage({image: file3, description})
               newPost.photo3 = result.imagePath.split("/")[2];
+              
+              
             }catch(err){}
           }
           if(file4){
@@ -87,6 +114,8 @@ export default function CadastrarCompartilhar() {
               const description = Date.now() + file4.name;
               const result = await postImage({image: file4, description})
               newPost.photo4 = result.imagePath.split("/")[2];
+              
+              
             }catch(err){}
           }
           if(file5){
@@ -94,15 +123,22 @@ export default function CadastrarCompartilhar() {
               const description = Date.now() + file5.name;
               const result = await postImage({image: file5, description})
               newPost.photo5 = result.imagePath.split("/")[2];
+              
+              
             }catch(err){}
           }
         try{
-            const res =  await api.post("/compartilhar", newPost);
-            SetAddPhoto(false)
-            console.log(res)
-            window.location.replace("/habitacao/compartilhar");
+          if(file1 !== null && file2 !== null && file3 !== null && file4 !== null && file5 !== null){
+            await api.put(`/aluguel/${path}`, newPost)
+            console.log(newPost)
+            setAlertImg(false)
+            window.location.replace(`/habitacao/aluguel/${path}`);
+          }else{
+            setAlertImg(true)
+          }
         }catch(err){}
       }
+
 
       const setImg = () =>{
         if(file1 !== null && file2 !== null && file3 !== null && file4 !== null && file5 !== null){
@@ -124,31 +160,23 @@ export default function CadastrarCompartilhar() {
           alert(err)
         }
       }
-
   return (
     <div className='fullContentAluguel'>
         <Menu />
-            <header className='headerAluguel'>
-                <div className='flexHeaderAluguel'>
-                    <p className='buttonHeaderAluguelHeaderCadastrar'>Divulgar Casa em Compartilhamento...</p>
-                </div>
-            </header>
-        {addPhoto && (
-            <header className='headerAluguel'>
-                <div className='flexHeaderAluguel'>
-                    <p className='buttonHeaderAluguelHeaderCadastrarRed'>Adicione necessário as 5 imagens para poder divulgar</p>
-                </div>
-            </header>
-        )}
+        <header className='headerAluguel'>
+            <div className='flexHeaderAluguel'>
+                <p className='buttonHeaderAluguelHeaderCadastrar'>Editar divulgação em alugar...</p>
+            </div>
+        </header>
         <div className='contentSideBarForm'>
             <form className='formCadastrarContent' onSubmit={handleSubmit}>
-            {alertImg && (<h6 className='headerIAlert'>Adicione as 5 imagens para proceguir...</h6>)}
+              {alertImg && (<h6 className='headerIAlert'>Adicione as 5 imagens para proceguir...</h6>)}
                 <i className='headerI'>Adaiciona cinco (5) imagens...</i>
                 <div className='imgPhotosHoome'>
                 {file1 ? (
-                    <img src={URL.createObjectURL(file1)} alt='uploadImg' className='labelFotoObject' />
+                    <img src={URL.createObjectURL(file1)}  alt='uploadImg' className='labelFotoObject' />
                 ):(
-                    <label for='foto1' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd"></i></label>
+                    <label for='foto1' className='labelFoto'><i className="fa-solid fa-circle-plus sizeAdd" ></i></label>
                 )}
                     <input type="file" accept="image/*" id='foto1' required className='inputFotoLabelAlugel'onChange={(e)=> setFile1(e.target.files[0])} />
                     {file2 ? (
@@ -178,29 +206,28 @@ export default function CadastrarCompartilhar() {
                 </div>
                 <div className='inputsFormeCadastrarAluguel'>
                     <div className='precoType'>
-                        <input type='text' placeholder='Ex.: Apartamento' required className='precoTypeInput' onChange={(e)=> setCat(e.target.value)}/>
-                        <input type='number' placeholder='Preço' required className='precoTypeInput' onChange={(e)=> setPreco(e.target.value)}/>
+                        <input type='text'value={cat} placeholder='Ex.: Apartamento' required className='precoTypeInput' onChange={(e)=> setCat(e.target.value)}/>
+                        <input type='number'value={preco} placeholder='Preço' required className='precoTypeInput' onChange={(e)=> setPreco(e.target.value)}/>
                     </div>
                     <div className='precoType'>
-                        <input type='number' maxLength='2' placeholder='Meses de Contrato' required className='precoTypeInput' onChange={(e)=> setContrato(e.target.value)}/>
-                        <input type='text' placeholder='CEP' maxLength='9'
+                        <input type='number' value={contrato} maxLength='2' placeholder='Meses de Contrato' required className='precoTypeInput' onChange={(e)=> setContrato(e.target.value)}/>
+                        <input type='text' value={cep.cep} placeholder='CEP' maxLength='9'
                                 minLength='9' required className='precoTypeInput'
                                 onChange={(e)=> setCepp(e.target.value)} 
                                 onBlur={Cepfuncion}
                         />
                     </div>
                     <div className='precoType'>
-                        <input type='number' placeholder='Nº de Quartos' required className='precoTypeInputNumber' onChange={(e)=> setQuarto(e.target.value)}/>
-                        <input type='number' placeholder='Nº de Salas' required className='precoTypeInputNumber' onChange={(e)=> setSala(e.target.value)}/>
-                        <input type='number' placeholder='Nº de Cozinha' required className='precoTypeInputNumber' onChange={(e)=> setCozinha(e.target.value)}/>
+                        <input type='number' value={quarto} placeholder='Nº de Quartos' required className='precoTypeInputNumber' onChange={(e)=> setQuarto(e.target.value)}/>
+                        <input type='number'value={sala} placeholder='Nº de Salas' required className='precoTypeInputNumber' onChange={(e)=> setSala(e.target.value)}/>
+                        <input type='number' value={cozinha} placeholder='Nº de Cozinha' required className='precoTypeInputNumber' onChange={(e)=> setCozinha(e.target.value)}/>
                     </div>
                     <div className='precoType'>
-                        <input type='number' placeholder='Nº de Banheiro' required className='precoTypeInputNumber' onChange={(e)=> setBanheiro(e.target.value)}/>
-                        <input type='number' placeholder='Nº de Área' required className='precoTypeInputNumber' onChange={(e)=> setArea(e.target.value)}/>
-                        <input type='number' placeholder='Nº de Pessoas' required className='precoTypeInputNumber' onChange={(e)=> setMoradores(e.target.value)}/>
+                        <input type='number' value={banheiro} placeholder='Nº de Banheiro' required className='precoTypeInput' onChange={(e)=> setBanheiro(e.target.value)}/>
+                        <input type='number'value={area} placeholder='Nº de Área' required className='precoTypeInput' onChange={(e)=> setArea(e.target.value)}/>
                     </div>
                     <div className='precoType'>
-                        <textarea className='forNewDesc' placeholder='Descreve a casa em poucas palavras....' maxLength='200' onChange={(e)=> setDesc(e.target.value)}></textarea>
+                        <textarea className='forNewDesc' value={desc} placeholder='Descreve a casa em poucas palavras....' maxLength='200' onChange={(e)=> setDesc(e.target.value)}></textarea>
                     </div>
                     <div className='precoType'>
                         <button type='submit' onClick={setImg} className='CadastrarcasaEmAluguel'>Cadastrar casa em Aluguel</button>

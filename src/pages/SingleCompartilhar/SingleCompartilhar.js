@@ -145,7 +145,7 @@ const FotoChengFive = ()=>{
             <p><i className="sizeColor fa-solid fa-calendar-day"></i> {new  Date(post.createdAt).toDateString()}</p>
             <p><i className="sizeColor fa-solid fa-toggle-on"></i> Desponível</p>
             <p><i className="sizeColor fa-solid fa-map-location-dot"></i> Endereço</p>
-            <p><i className="fa-duotone fa-fire-burner"></i>{post.cozinha} </p>
+            <p><i class="bi bi-alarm-fill"></i>{post.cozinha} </p>
             <p><i className="fa-duotone fa-circle-info"></i>{post.info} </p>
             <p><i class="fa-duotone fa-bed"></i>{post.quartos} </p>
             
