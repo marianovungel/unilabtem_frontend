@@ -42,7 +42,7 @@ const whatsappSend = () =>{
   window.open(`http://wa.me/+55${post.userwhatsapp}?text=${messageZap}`)
 }
 const Home = () =>{
-  window.open("http://localhost:3000")
+  window.location.replace("/habitacao/aluguel")
 }
 const EditTrue = () =>{
   setEditar(true)
