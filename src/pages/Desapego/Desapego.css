@@ -226,7 +226,7 @@
     height: 100%;
 }
 .divHeader{
-    height: 50px;
+    height: 30px;
     width:100%;
     display: flex;
     justify-content: flex-start;

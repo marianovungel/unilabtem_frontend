@@ -62,10 +62,8 @@ function Venda() {
           </div>
           
           <form className='formProduto' onSubmit={handleSubmit} >
-            <h2 className='produtoFormModal'>Cadastrar Produto</h2>
-            
-            <input type="file" accept="image/*" onChange={(e)=> setFile(e.target.files[0])}/>
-            
+            <h4 className='produtoFormModal'>Cadastrar Produto</h4>
+            <input type="file" className='imgInputContent' accept="image/*" onChange={(e)=> setFile(e.target.files[0])}/>
             <input className='inputProduto' type='text' placeholder='Titulo' onChange={(e)=> setTitle(e.target.value)} />
             <input className='inputProduto' type='Number' placeholder='R$ 00,00' onChange={(e)=> setPreco(e.target.value)} />
             <textarea placeholder='descrição...' className="story" rows="10" cols="33" onChange={(e)=> setDesc(e.target.value)} ></textarea>

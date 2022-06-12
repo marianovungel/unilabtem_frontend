@@ -237,7 +237,7 @@ const URLImg = "https://festupload.s3.amazonaws.com/";
             
           ) : (
           <form className='formProdutoDesapego' onSubmit={handleSubmit} key={file}>
-              <h4 className='produtoFormModal'>Criar produto em Desapego</h4>
+              <h4 className='produtoFormModal'>Divulgar Doação</h4>
               {file ? (
                 <div className='imgPostPreviw'>
                   <img src={URL.createObjectURL(file)} alt='uploadImg' className='imgPostPreviw' />
@@ -247,7 +247,7 @@ const URLImg = "https://festupload.s3.amazonaws.com/";
                   <i className="fa-solid fa-image fa-solid fa-image imgPostPreviwIcon"></i>
                 </div>
               )}
-              <input type="file" accept="image/*" required onChange={(e)=> setFile(e.target.files[0])}/>
+              <input type="file" className='imgInputContent' accept="image/*" required onChange={(e)=> setFile(e.target.files[0])}/>
               <input className='inputProduto' type='text' placeholder='Titulo' required onChange={(e)=> setTitle(e.target.value)} />
               <input className='inputProduto' type='text' placeholder='CEP' maxLength='9'
               minLength='9' required onChange={(e)=> setCepp(e.target.value)} onBlur={Cepfuncion} />
@@ -275,7 +275,6 @@ const URLImg = "https://festupload.s3.amazonaws.com/";
     {desapego.map((p)=>(
     <div className='allCard' key={p.photo}>
         <div className='divHeader'>
-            <i id="idImg" className="fa-solid fa-user"></i>
             <p className='SpanUsername'>{ p.username }</p>
         </div>
         <div className='descClassName'>

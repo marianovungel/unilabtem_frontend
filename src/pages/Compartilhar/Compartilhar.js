@@ -3,6 +3,7 @@ import Menu from '../../components/Menu/Menu'
 import {Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import api from '../../services/api'
+import HeaderCompart from '../../components/HeaderCompart/HeaderCompart'
 
 export default function Compartilhar() {
 
@@ -29,25 +30,13 @@ export default function Compartilhar() {
         <Menu />
         <header className='headerAluguel'>
             <div className='flexHeaderAluguel'>
-                <Link to='/habitacao/aluguel'>
-                    <button  className='buttonHeaderAluguel'>Aluguel</button>
-                </Link>
-                <Link to='/habitacao/compartilhar'>
-                <button id='alugarCasa' className='buttonHeaderAluguel'>Compartilhamento</button>
-                </Link>
-                <Link to='/compartilhar/cadastrar'>
-                    <button className='buttonHeaderAluguel'>Postar Casa...</button>
-                </Link>
-                <form className='formSearchAluguelHeader'>
-                    <input className='inputParaPesquisarAluguel' type='search' placeholder='Pesquise por cidade...' minLength='1' />
-                    <button type='submit' className='botaoDePesquisaAluguel'>Pesquisar...</button>
-                </form>
+            <HeaderCompart />
             </div>
         </header>
         <div className='contentSideBar'>
             {compartilhar?.map((p)=>(
                 <div className='cardAluguel' key={p?._id}>
-                <img className='imgAluguelCard' src={URLImg + p.photo3} alt='' />
+                <img className='imgAluguelCard' src={URLImg + p.photo1} alt='' />
                 <div className='descPlaceAluguel'>
                     <div className='ajustPositionDesc'>
                         <p><i>Categoria</i>: <b>{p.categories}</b></p>
