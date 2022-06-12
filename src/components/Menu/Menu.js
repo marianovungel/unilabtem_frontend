@@ -18,7 +18,7 @@ export default function Menu({props}) {
             <img className='imagemLogo' src="./image/preta.png" alt="logoUnilabtem" />
         </div>
         <ul className='menuList'>
-            <Link to='/desapego'><li>Desapego</li></Link>
+            <Link to='/desapego'><li>Doação</li></Link>
             <Link to='/'><li>Venda</li></Link>
             <Link to='/habitacao/aluguel'><li>Habitação</li></Link>
             <li>Oportunidades</li>
