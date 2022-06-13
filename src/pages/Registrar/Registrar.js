@@ -59,7 +59,8 @@ export default function Registrar() {
                     </form>
                     {error && <h3 className='errRegister'>Confirme Corretamente a sua Senha!</h3>}
                     <div className='criar'>
-                        <span className='Termos'><Link to='#'>Termos e Políticas</Link> ou <Link to='/'>Login</Link></span>
+                        <h6 className='Termos'><Link to='#'>Termos e Políticas</Link></h6>
+                         <h6><Link to='/'>Login</Link></h6>
                     </div>
                 </div>
                 

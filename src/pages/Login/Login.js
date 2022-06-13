@@ -42,7 +42,8 @@ export default function Login() {
                         <button className='inputLogin entrarbutton' type='submit' disabled={isFetching}><Link to='/venda'>Sing In</Link></button>
                     </form>
                     <div className='criar'>
-                        <span className='Termos'><Link to='#'>Termos e Políticas</Link> ou <Link to='/registrar'>Criar conta</Link></span>
+                        <h6 className='Termos'><Link to='#'>Termos e Políticas de uso da aplicação...</Link></h6>
+                        <h6 className='Termos'><Link to='/registrar'>Criar conta</Link></h6>
                     </div>
                 </div>
             </div>
