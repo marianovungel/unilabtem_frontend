@@ -12,11 +12,6 @@ export default function Registrar() {
     const [error, seterror] = useState(false)
     const [confirmPassword, setConfirmPassword] = useState("")
     const history = useHistory()
-    
-    console.log(username)
-    console.log(confirmPassword)
-    console.log(whatsapp)
-    console.log(password)
 
     const handleSubmit = async (e)=>{
         e.preventDefault();

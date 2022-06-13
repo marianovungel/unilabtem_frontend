@@ -6,6 +6,7 @@ import {Context} from '../../Context/Context'
 import upload from '../../services/upload'
 import api from '../../services/api'
 import { useLocation} from 'react-router-dom';
+import {useHistory} from 'react-router-dom'
 
 //upload img
 async function postImage({image, description}) {
@@ -21,6 +22,7 @@ export default function EditCompartilhar() {
 
     //useStates
     const { user } = useContext(Context)
+    const history = useHistory()
     const [file1, setFile1] = useState(null)
     const [file2, setFile2] = useState(null)
     const [file3, setFile3] = useState(null)
@@ -135,9 +137,10 @@ export default function EditCompartilhar() {
         try{
           if(file1 !== null && file2 !== null && file3 !== null && file4 !== null && file5 !== null){
             await api.put(`/compartilhar/${path}`, newPost)
-            console.log(newPost)
             setAlertImg(false)
-            window.location.replace(`/habitacao/compartilhar/${path}`);
+            history.goBack()
+
+            // window.location.replace(`/habitacao/compartilhar/${path}`);
           }else{
             setAlertImg(true)
           }

@@ -27,8 +27,7 @@ function Venda() {
   const { user } = useContext(Context)
 //upload img function
 
-  const handleSubmit = async (e)=>{
-    e.preventDefault()
+  const handleSubmit = async ()=>{
     const newPost = {
       username: user.username,
       userwhatsapp: user.whatsapp,
@@ -40,13 +39,11 @@ function Venda() {
       try{
         const description = Date.now() + file.name;
         const result = await postImage({image: file, description})
-        console.log(result)
         newPost.photo = result.imagePath.split("/")[2];
       }catch(err){}
     }
     try{
-      const resp = await api.post("/produto", newPost);
-      console.log(resp.data.post.photo)
+      await api.post("/produto", newPost);
     }catch(err){}
   }
   

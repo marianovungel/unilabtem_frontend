@@ -62,3 +62,16 @@
     color: aliceblue;
     text-decoration: underline;
 }
+
+#nawCreate{
+    color: #666;
+    transform: scale(0.95);
+}
+#nawCreate:hover{
+    color: #000;
+    transform: scale(1);
+}
+#h2Margin{
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}

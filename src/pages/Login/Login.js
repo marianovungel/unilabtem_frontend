@@ -36,14 +36,14 @@ export default function Login() {
             <div className='section'>
                 <div className='form'>
                     <form className='loginForm' onSubmit={handleSubmit}>
-                        <h2>LOGIN</h2>
+                        <h2 id='h2Margin'>LOGIN</h2>
                         <input className='inputLogin' type='text' placeholder=' User' ref={userRef} />
                         <input className='inputLogin' type='password' placeholder=' Password' minLength='4' ref={passwordRef} />
                         <button className='inputLogin entrarbutton' type='submit' disabled={isFetching}><Link to='/venda'>Sing In</Link></button>
+                        <Link to='/registrar'><i className='TermosCreate' id='nawCreate'>Criar conta</i></Link>
                     </form>
                     <div className='criar'>
-                        <h6 className='Termos'><Link to='#'>Termos e Políticas de uso da aplicação...</Link></h6>
-                        <h6 className='Termos'><Link to='/registrar'>Criar conta</Link></h6>
+                        <h6 className='Termos'><Link to='#'>Termos e Políticas de uso da aplicação</Link></h6>
                     </div>
                 </div>
             </div>
