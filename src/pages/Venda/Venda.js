@@ -6,6 +6,7 @@ import {useState, useContext} from 'react'
 import {Context} from '../../Context/Context'
 import api from '../../services/api'
 import upload from '../../services/upload'
+// import { useHistory} from 'react-router-dom'
 //upload img
 async function postImage({image, description}) {
   const formData = new FormData();
@@ -22,12 +23,14 @@ function Venda() {
   const [title, setTitle] = useState("")
   const [desc, setDesc] = useState("")
   const [file, setFile] = useState(null)
+  // const history = useHistory()
   
 
   const { user } = useContext(Context)
 //upload img function
 
-  const handleSubmit = async ()=>{
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
     const newPost = {
       username: user.username,
       userwhatsapp: user.whatsapp,
@@ -39,11 +42,14 @@ function Venda() {
       try{
         const description = Date.now() + file.name;
         const result = await postImage({image: file, description})
+        console.log(result)
         newPost.photo = result.imagePath.split("/")[2];
       }catch(err){}
     }
     try{
-      await api.post("/produto", newPost);
+      const resp = await api.post("/produto", newPost);
+      console.log(resp.data.post.photo)
+      // history.go()
     }catch(err){}
   }
   
