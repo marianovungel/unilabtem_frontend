@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {useContext} from 'react'
 import {Context} from './Context/Context'
 import Venda from './pages/Venda/Venda'
@@ -23,7 +23,7 @@ function App() {
   const {user} = useContext(Context);
 
   return (
-      <BrowserRouter>
+      <Router basename="/tothepoint_login">
         <Switch> 
           <Route path="/" component={ user ? Venda : Login} exact />
           <Route path="/desapego" component={ user ? Desapego : Login} exact />
@@ -42,7 +42,7 @@ function App() {
           <Route path="/sobre" component={Sobre} />
           <Route path="/registrar" component={Registrar} />
         </Switch>
-      </BrowserRouter>
+      </Router>
   );
 }
 
